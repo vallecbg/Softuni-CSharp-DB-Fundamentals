@@ -141,3 +141,21 @@ AS
          FROM Employees
          WHERE DepartmentID = @departmentId;
      END;
+
+/****** Problem 10. People with Balance Higher Than ******/
+CREATE PROCEDURE usp_GetHoldersWithBalanceHigherThan
+(
+	@sum MONEY
+)
+AS
+BEGIN 
+SELECT FirstName, LastName FROM
+	(
+		SELECT FirstName, LastName, SUM(a.Balance) AS TotalBalance 
+		FROM AccountHolders AS ah
+		JOIN Accounts AS a ON a.AccountHolderId = ah.Id
+		GROUP BY ah.FirstName, ah.LastName
+	) AS tb
+	WHERE tb.TotalBalance > @sum
+	ORDER BY tb.FirstName, tb.LastName
+END;
