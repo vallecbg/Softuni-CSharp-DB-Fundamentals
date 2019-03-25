@@ -8,6 +8,7 @@
 
     using Data;
     using ViewModels.Items;
+    using FastFood.Models;
 
     public class ItemsController : Controller
     {
@@ -22,7 +23,8 @@
 
         public IActionResult Create()
         {
-            var categories = this.context.Categories
+            var categories = this.context
+                .Categories
                 .ProjectTo<CreateItemViewModel>(mapper.ConfigurationProvider)
                 .ToList();
 
@@ -32,12 +34,28 @@
         [HttpPost]
         public IActionResult Create(CreateItemInputModel model)
         {
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var items = this.mapper.Map<Item>(model);
+
+            this.context.Items.Add(items);
+
+            this.context.SaveChanges();
+
+            return this.RedirectToAction("All", "Items");
         }
 
         public IActionResult All()
         {
-            throw new NotImplementedException();
+            var items = this.context
+                .Items
+                .ProjectTo<ItemsAllViewModels>(mapper.ConfigurationProvider)
+                .ToList();
+
+            return this.View(items);
         }
     }
 }

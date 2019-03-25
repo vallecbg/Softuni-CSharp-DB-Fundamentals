@@ -7,6 +7,9 @@
 
     using Data;
     using ViewModels.Orders;
+    using FastFood.Models;
+    using AutoMapper.QueryableExtensions;
+    using FastFood.Models.Enums;
 
     public class OrdersController : Controller
     {
@@ -32,13 +35,36 @@
 
         [HttpPost]
         public IActionResult Create(CreateOrderInputModel model)
-        { 
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var order = this.mapper.Map<Order>(model);
+            order.DateTime = DateTime.Now;
+            order.Type = Enum.Parse<OrderType>(model.OrderType);
+            order.OrderItems.Add(new OrderItem()
+            {
+                ItemId = model.ItemId,
+                Order = order,
+                Quantity = model.Quantity
+            });
+
+            this.context.Orders.Add(order);
+            this.context.SaveChanges();
+
             return this.RedirectToAction("All", "Orders");
         }
 
         public IActionResult All()
         {
-            throw new NotImplementedException();
+            var orders = this.context
+                .Orders
+                .ProjectTo<OrderAllViewModel>(mapper.ConfigurationProvider)
+                .ToList();
+
+            return this.View(orders);
         }
     }
 }

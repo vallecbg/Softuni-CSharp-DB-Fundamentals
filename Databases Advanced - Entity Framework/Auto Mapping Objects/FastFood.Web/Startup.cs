@@ -41,6 +41,8 @@ namespace FastFood.Web
 
             //TODO add Automapper configuration
 
+            services.AddAutoMapper(am => am.AddProfile<FastFoodProfile>());
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
