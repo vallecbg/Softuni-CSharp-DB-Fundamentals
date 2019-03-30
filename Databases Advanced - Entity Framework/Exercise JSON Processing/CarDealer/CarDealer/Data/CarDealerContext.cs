@@ -7,12 +7,12 @@ namespace CarDealer.Data
 {
     public class CarDealerContext : DbContext
     {
-        public CarDealerContext(DbContextOptions options)
-            : base(options)
+        public CarDealerContext()
         {
         }
 
-        protected CarDealerContext()
+        public CarDealerContext(DbContextOptions options)
+            : base(options)
         {
         }
 
@@ -27,7 +27,7 @@ namespace CarDealer.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=CarDealer;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=CarDealer;Integrated Security=True");
             }
         }
 

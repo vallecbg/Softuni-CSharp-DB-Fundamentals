@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealer", "CarDealer\CarDealer.csproj", "{C4A8D4B4-D187-4E31-8A2F-9AB6525D1D2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Tests", "CarDealer.Tests\CarDealer.Tests.csproj", "{269CA685-AE50-490D-A1C2-609BEDAEBAC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C4A8D4B4-D187-4E31-8A2F-9AB6525D1D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A8D4B4-D187-4E31-8A2F-9AB6525D1D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A8D4B4-D187-4E31-8A2F-9AB6525D1D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269CA685-AE50-490D-A1C2-609BEDAEBAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269CA685-AE50-490D-A1C2-609BEDAEBAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269CA685-AE50-490D-A1C2-609BEDAEBAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269CA685-AE50-490D-A1C2-609BEDAEBAC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

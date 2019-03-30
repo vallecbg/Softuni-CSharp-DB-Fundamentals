@@ -17,6 +17,6 @@ namespace CarDealer.Models
 
         public ICollection<Sale> Sales { get; set; }
 
-        public ICollection<PartCar> PartCars { get; set; } = new List<PartCar>();
+        public ICollection<PartCar> PartCars { get; set; } = new HashSet<PartCar>();
     }
 }
