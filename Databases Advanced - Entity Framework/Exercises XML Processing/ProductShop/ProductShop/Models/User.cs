@@ -1,4 +1,6 @@
-﻿namespace ProductShop.Models
+﻿using ProductShop.Dtos.Export;
+
+namespace ProductShop.Models
 {
     using System.Collections.Generic;
 
