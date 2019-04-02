@@ -25,8 +25,9 @@ namespace FastFood.Data
 		{
 			if (!builder.IsConfigured)
 			{
-				builder.UseSqlServer(Configuration.ConnectionString);
-			}
+				builder.UseSqlServer(Configuration.ConnectionString)
+                    .EnableSensitiveDataLogging();
+            }
 		}
 
 		protected override void OnModelCreating(ModelBuilder model)

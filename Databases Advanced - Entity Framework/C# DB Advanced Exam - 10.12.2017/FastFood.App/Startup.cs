@@ -15,15 +15,15 @@ namespace FastFood.App
 		{
 			var context = new FastFoodDbContext();
 
-			ResetDatabase(context);
+            //ResetDatabase(context);
 
-			Console.WriteLine("Database Reset.");
+            //Console.WriteLine("Database Reset.");
 
-			Mapper.Initialize(cfg => cfg.AddProfile<FastFoodProfile>());
+            Mapper.Initialize(cfg => cfg.AddProfile<FastFoodProfile>());
 
 			//ImportEntities(context);
 
-			//ExportEntities(context);
+			ExportEntities(context);
 
 			//BonusTask(context);
 		}
@@ -32,15 +32,15 @@ namespace FastFood.App
 		{
 			const string exportDir = "./ImportResults/";
 
-			var employees = DataProcessor.Deserializer.ImportEmployees(context, File.ReadAllText(baseDir + "employees.json"));
-			PrintAndExportEntityToFile(employees, exportDir + "Employees.txt");
+            var employees = DataProcessor.Deserializer.ImportEmployees(context, File.ReadAllText(baseDir + "employees.json"));
+            PrintAndExportEntityToFile(employees, exportDir + "Employees.txt");
 
-			var items = DataProcessor.Deserializer.ImportItems(context, File.ReadAllText(baseDir + "items.json"));
-			PrintAndExportEntityToFile(items, exportDir + "Items.txt");
+            var items = DataProcessor.Deserializer.ImportItems(context, File.ReadAllText(baseDir + "items.json"));
+            PrintAndExportEntityToFile(items, exportDir + "Items.txt");
 
-			var orders = DataProcessor.Deserializer.ImportOrders(context, File.ReadAllText(baseDir + "orders.xml"));
-			PrintAndExportEntityToFile(orders, exportDir + "Orders.txt");
-		}
+            var orders = DataProcessor.Deserializer.ImportOrders(context, File.ReadAllText(baseDir + "orders.xml"));
+            PrintAndExportEntityToFile(orders, exportDir + "Orders.txt");
+        }
 
 		private static void ExportEntities(FastFoodDbContext context)
 		{
@@ -48,11 +48,11 @@ namespace FastFood.App
 
 			var jsonOutput = DataProcessor.Serializer.ExportOrdersByEmployee(context, "Avery Rush", "ToGo");
 			Console.WriteLine(jsonOutput);
-			File.WriteAllText(exportDir + "OrdersByEmployee.json", jsonOutput);
+			//File.WriteAllText(exportDir + "OrdersByEmployee.json", jsonOutput);
 
-			var xmlOutput = DataProcessor.Serializer.ExportCategoryStatistics(context, "Chicken,Drinks,Toys");
-			Console.WriteLine(xmlOutput);
-			File.WriteAllText(exportDir + "CategoryStatistics.xml", xmlOutput);
+			//var xmlOutput = DataProcessor.Serializer.ExportCategoryStatistics(context, "Chicken,Drinks,Toys");
+			//Console.WriteLine(xmlOutput);
+			//File.WriteAllText(exportDir + "CategoryStatistics.xml", xmlOutput);
 		}
 
 		private static void BonusTask(FastFoodDbContext context)
@@ -64,7 +64,7 @@ namespace FastFood.App
 		private static void PrintAndExportEntityToFile(string entityOutput, string outputPath)
 		{
 			Console.WriteLine(entityOutput);
-			File.WriteAllText(outputPath, entityOutput.TrimEnd());
+			//File.WriteAllText(outputPath, entityOutput.TrimEnd());
 		}
 
 		private static void ResetDatabase(FastFoodDbContext context)
