@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastFood.App\FastFood.App.csproj" />
+    <ProjectReference Include="..\FastFood.DataProcessor\FastFood.DataProcessor.csproj" />
+    <ProjectReference Include="..\FastFood.Data\FastFood.Data.csproj" />
+    <ProjectReference Include="..\FastFood.Models\FastFood.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFood.Models", "FastFood
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastFood.DataProcessor", "FastFood.DataProcessor\FastFood.DataProcessor.csproj", "{3245DD5A-F585-4896-BF30-AC8B864F15B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastFood.Tests", "FastFood.Tests\FastFood.Tests.csproj", "{EAE2913E-0C98-4939-99F0-DC692AFA96B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3245DD5A-F585-4896-BF30-AC8B864F15B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3245DD5A-F585-4896-BF30-AC8B864F15B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3245DD5A-F585-4896-BF30-AC8B864F15B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE2913E-0C98-4939-99F0-DC692AFA96B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE2913E-0C98-4939-99F0-DC692AFA96B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE2913E-0C98-4939-99F0-DC692AFA96B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE2913E-0C98-4939-99F0-DC692AFA96B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
