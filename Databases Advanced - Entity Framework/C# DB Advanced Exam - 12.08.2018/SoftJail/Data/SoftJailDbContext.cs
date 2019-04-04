@@ -1,7 +1,8 @@
 ﻿namespace SoftJail.Data
 {
-	using Microsoft.EntityFrameworkCore;
-    using SoftJail.Data.Models;
+    using EntityConfiguration;
+    using Microsoft.EntityFrameworkCore;
+    using Models;
 
     public class SoftJailDbContext : DbContext
 	{
@@ -14,19 +15,19 @@
 		{
 		}
 
-        public DbSet<Prisoner> Prisoners { get; set; }
+	    public DbSet<Prisoner> Prisoners { get; set; }
 
-        public DbSet<Officer> Officers { get; set; }
+	    public DbSet<Officer> Officers { get; set; }
 
-        public DbSet<Cell> Cells { get; set; }
+	    public DbSet<Cell> Cells { get; set; }
 
-        public DbSet<Mail> Mails { get; set; }
+	    public DbSet<Mail> Mails { get; set; }
 
-        public DbSet<Department> Departments { get; set; }
+	    public DbSet<Department> Departments { get; set; }
 
-        public DbSet<OfficerPrisoner> OfficersPrisoners { get; set; }
+	    public DbSet<OfficerPrisoner> OfficersPrisoners { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
 			{
@@ -35,44 +36,17 @@
 			}
 		}
 
-
-        protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder builder)
 		{
-            builder.Entity<OfficerPrisoner>()
-                .HasKey(op => new { op.OfficerId, op.PrisonerId });
-            builder.Entity<OfficerPrisoner>()
-                .HasOne(op => op.Prisoner)
-                .WithMany(p => p.PrisonerOfficers)
-                .HasForeignKey(op => op.PrisonerId)
-                .OnDelete(DeleteBehavior.Restrict);
-            builder.Entity<OfficerPrisoner>()
-                .HasOne(op => op.Officer)
-                .WithMany(o => o.OfficerPrisoners)
-                .HasForeignKey(op => op.OfficerId)
-                .OnDelete(DeleteBehavior.Restrict);
+		    builder.ApplyConfiguration(new PrisonerConfiguration());
 
-            builder.Entity<Officer>()
-                .HasOne(c => c.Department)
-                .WithMany(o => o.Officers)
-                .HasForeignKey(o => o.DepartmentId);
+		    builder.ApplyConfiguration(new OfficerConfiguration());
 
-            builder.Entity<Cell>()
-                .HasOne(c => c.Department)
-                .WithMany(d => d.Cells)
-                .HasForeignKey(c => c.DepartmentId);
+		    builder.ApplyConfiguration(new CellConfiguration());
 
-            builder.Entity<Mail>()
-                .HasOne(m => m.Prisoner)
-                .WithMany(p => p.Mails)
-                .HasForeignKey(m => m.PrisonerId)
-                .OnDelete(DeleteBehavior.Restrict);
+		    builder.ApplyConfiguration(new MailConfiguration());
 
-            builder.Entity<Prisoner>()
-                .HasOne(p => p.Cell)
-                .WithMany(c => c.Prisoners)
-                .HasForeignKey(p => p.CellId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-        }
-    }
+		    builder.ApplyConfiguration(new OfficerPrisonerConfiguration());
+		}
+	}
 }

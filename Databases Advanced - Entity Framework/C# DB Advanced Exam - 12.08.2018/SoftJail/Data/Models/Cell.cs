@@ -1,26 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-
-namespace SoftJail.Data.Models
+﻿namespace SoftJail.Data.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Cell
     {
         public Cell()
         {
             this.Prisoners = new List<Prisoner>();
-        }
-
-        public Cell(int id, int cellNumber, bool hasWindow, int departmentId, Department department, ICollection<Prisoner> prisoners)
-        {
-            Id = id;
-            CellNumber = cellNumber;
-            HasWindow = hasWindow;
-            DepartmentId = departmentId;
-            Department = department;
-            Prisoners = prisoners;
         }
 
         [Key]
@@ -33,9 +20,7 @@ namespace SoftJail.Data.Models
         [Required]
         public bool HasWindow { get; set; }
 
-        //[ForeignKey(nameof(Department))]
         public int DepartmentId { get; set; }
-        //[Required]
         public Department Department { get; set; }
 
         public ICollection<Prisoner> Prisoners { get; set; }

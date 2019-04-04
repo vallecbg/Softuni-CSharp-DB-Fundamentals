@@ -12,11 +12,11 @@
         {
             var context = new SoftJailDbContext();
 
-            //Mapper.Initialize(config => config.AddProfile<SoftJailProfile>());
+            Mapper.Initialize(config => config.AddProfile<SoftJailProfile>());
 
-            ResetDatabase(context, shouldDropDatabase: false);
+            ResetDatabase(context, shouldDropDatabase: true);
 
-            //var projectDir = GetProjectDirectory();
+            var projectDir = GetProjectDirectory();
 
             //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
             //ExportEntities(context, projectDir + @"ExportResults/");

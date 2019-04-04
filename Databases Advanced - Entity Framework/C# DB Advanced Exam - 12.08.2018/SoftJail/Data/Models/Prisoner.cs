@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SoftJail.Data.Models
+﻿namespace SoftJail.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Prisoner
     {
         public Prisoner()
@@ -13,26 +12,11 @@ namespace SoftJail.Data.Models
             this.PrisonerOfficers = new List<OfficerPrisoner>();
         }
 
-        public Prisoner(int id, string fullName, string nickname, int age, DateTime incarcerationDate, DateTime releaseDate, decimal bail, int cellId, Cell cell, ICollection<Mail> mails, ICollection<OfficerPrisoner> prisonerOfficers)
-        {
-            Id = id;
-            FullName = fullName;
-            Nickname = nickname;
-            Age = age;
-            IncarcerationDate = incarcerationDate;
-            ReleaseDate = releaseDate;
-            Bail = bail;
-            CellId = cellId;
-            Cell = cell;
-            Mails = mails;
-            PrisonerOfficers = prisonerOfficers;
-        }
-
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(maximumLength: 20, MinimumLength = 3)]
+        [StringLength(20, MinimumLength = 3)]
         public string FullName { get; set; }
 
         [Required]
@@ -45,14 +29,13 @@ namespace SoftJail.Data.Models
 
         [Required]
         public DateTime IncarcerationDate { get; set; }
-        
+
         public DateTime? ReleaseDate { get; set; }
 
-        [Range(0.0, double.MaxValue)]
+        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal? Bail { get; set; }
 
-        //[ForeignKey(nameof(Cell))]
-        public int CellId { get; set; }
+        public int? CellId { get; set; }
         public Cell Cell { get; set; }
 
         public ICollection<Mail> Mails { get; set; }
