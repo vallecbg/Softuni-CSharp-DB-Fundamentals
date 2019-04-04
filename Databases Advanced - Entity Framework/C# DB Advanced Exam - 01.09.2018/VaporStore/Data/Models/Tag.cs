@@ -9,13 +9,7 @@ namespace VaporStore.Data.Models
     {
         public Tag()
         {
-        }
-
-        public Tag(int id, string name, ICollection<GameTag> gametags)
-        {
-            Id = id;
-            Name = name;
-            GameTags = gametags;
+            this.GameTags = new List<GameTag>();
         }
 
         [Key]

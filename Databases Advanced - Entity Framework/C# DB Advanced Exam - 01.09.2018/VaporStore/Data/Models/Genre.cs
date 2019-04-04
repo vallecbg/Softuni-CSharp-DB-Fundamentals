@@ -9,13 +9,7 @@ namespace VaporStore.Data.Models
     {
         public Genre()
         {
-        }
-
-        public Genre(int id, string name, ICollection<Game> games)
-        {
-            Id = id;
-            Name = name;
-            Games = games;
+            this.Games = new List<Game>();
         }
 
         [Key]

@@ -11,17 +11,7 @@ namespace VaporStore.Data.Models
     {
         public Card()
         {
-        }
-
-        public Card(int id, string number, string cvc, CardType type, int userId, User user, ICollection<Purchase> purchases)
-        {
-            Id = id;
-            Number = number;
-            Cvc = cvc;
-            Type = type;
-            UserId = userId;
-            User = user;
-            Purchases = purchases;
+            this.Purchases = new List<Purchase>();
         }
 
         [Key]

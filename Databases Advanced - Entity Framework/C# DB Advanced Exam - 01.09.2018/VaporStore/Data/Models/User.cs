@@ -9,16 +9,7 @@ namespace VaporStore.Data.Models
     {
         public User()
         {
-        }
-
-        public User(int id, string username, string fullName, string email, int age, ICollection<Card> cards)
-        {
-            Id = id;
-            Username = username;
-            FullName = fullName;
-            Email = email;
-            Age = age;
-            Cards = cards;
+            this.Cards = new List<Card>();
         }
 
         [Key]

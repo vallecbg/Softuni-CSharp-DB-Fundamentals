@@ -3,6 +3,6 @@
 	public static class Configuration
 	{
 		public static string ConnectionString =
-            @"Server=.\\SQLEXPRESS;Database=VaporStore;Integrated Security=True";
+            @"Server=.\SQLEXPRESS;Database=VaporStore;Integrated Security=True";
 	}
 }

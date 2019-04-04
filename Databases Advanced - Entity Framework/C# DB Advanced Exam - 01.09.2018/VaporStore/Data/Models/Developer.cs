@@ -9,13 +9,7 @@ namespace VaporStore.Data.Models
     {
         public Developer()
         {
-        }
-
-        public Developer(int id, string name, ICollection<Game> games)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.Games = games;
+            this.Games = new List<Game>();
         }
 
         [Key]

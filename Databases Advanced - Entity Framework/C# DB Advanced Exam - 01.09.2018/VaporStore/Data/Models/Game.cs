@@ -9,16 +9,8 @@
     {
         public Game()
         {
-        }
-
-        public Game(string name, decimal price, DateTime releaseDate, Developer developer, Genre genre, ICollection<GameTag> gameTags)
-        {
-            this.Name = name;
-            this.Price = price;
-            this.ReleaseDate = releaseDate;
-            this.Developer = developer;
-            this.Genre = genre;
-            this.GameTags = gameTags;
+            this.GameTags = new List<GameTag>();
+            this.Purchases = new List<Purchase>();
         }
 
         [Key]
