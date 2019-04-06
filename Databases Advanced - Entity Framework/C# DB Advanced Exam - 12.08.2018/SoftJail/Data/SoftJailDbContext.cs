@@ -1,8 +1,9 @@
-﻿namespace SoftJail.Data
+﻿using SoftJail.Data.EntityConfiguration;
+
+namespace SoftJail.Data
 {
-    using EntityConfiguration;
-    using Microsoft.EntityFrameworkCore;
-    using Models;
+	using Microsoft.EntityFrameworkCore;
+    using SoftJail.Data.Models;
 
     public class SoftJailDbContext : DbContext
 	{
@@ -15,19 +16,19 @@
 		{
 		}
 
-	    public DbSet<Prisoner> Prisoners { get; set; }
+        public DbSet<Prisoner> Prisoners { get; set; }
 
-	    public DbSet<Officer> Officers { get; set; }
+        public DbSet<Officer> Officers { get; set; }
 
-	    public DbSet<Cell> Cells { get; set; }
+        public DbSet<Cell> Cells { get; set; }
 
-	    public DbSet<Mail> Mails { get; set; }
+        public DbSet<Mail> Mails { get; set; }
 
-	    public DbSet<Department> Departments { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
-	    public DbSet<OfficerPrisoner> OfficersPrisoners { get; set; }
+        public DbSet<OfficerPrisoner> OfficersPrisoners { get; set; }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			if (!optionsBuilder.IsConfigured)
 			{
@@ -36,17 +37,18 @@
 			}
 		}
 
-		protected override void OnModelCreating(ModelBuilder builder)
-		{
-		    builder.ApplyConfiguration(new PrisonerConfiguration());
 
-		    builder.ApplyConfiguration(new OfficerConfiguration());
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new PrisonerConfiguration());
 
-		    builder.ApplyConfiguration(new CellConfiguration());
+            builder.ApplyConfiguration(new OfficerConfiguration());
 
-		    builder.ApplyConfiguration(new MailConfiguration());
+            builder.ApplyConfiguration(new CellConfiguration());
 
-		    builder.ApplyConfiguration(new OfficerPrisonerConfiguration());
-		}
-	}
+            builder.ApplyConfiguration(new MailConfiguration());
+
+            builder.ApplyConfiguration(new OfficerPrisonerConfiguration());
+        }
+    }
 }
