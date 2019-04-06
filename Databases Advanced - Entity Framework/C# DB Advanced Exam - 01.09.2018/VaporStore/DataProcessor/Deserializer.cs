@@ -27,7 +27,6 @@ namespace VaporStore.DataProcessor
 
             foreach (var gameDto in games)
             {
-                
                 if (gameDto.Price < 0.00m ||
                     gameDto.Name == null || gameDto.ReleaseDate == null || gameDto.Developer == null || gameDto.Genre == null || gameDto.Tags == null || gameDto.Tags.Count == 0)
                 {
